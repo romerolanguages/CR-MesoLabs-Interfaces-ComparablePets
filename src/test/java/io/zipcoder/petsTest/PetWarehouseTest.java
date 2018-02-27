@@ -68,7 +68,7 @@ public class PetWarehouseTest {
     @Test
     public void removePetsTest() {
         // Given
-        int expectedNewDirewolfName = "newDirewolfName";
+        String expectedNewDirewolfName = "newDirewolfName";
         int expectedPetArrayListSize = 0;
         // When
         direwolf = new Direwolf(expectedNewDirewolfName);

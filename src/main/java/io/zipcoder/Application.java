@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Application {
 
     private ArrayList<Pet> petArrayList;
-    
+
     public ArrayList<Pet> getPetArrayList() {
         return null;
     }
