@@ -17,6 +17,9 @@ public class PetWarehouseTest {
 
     @Test
     public void PetWarehouseConstructorTest() {
+
+        // how do you test to make the PetWarehouse a singleton?
+
         // Given
         int expectedPetArrayListSize = 0;
         // When
@@ -78,6 +81,21 @@ public class PetWarehouseTest {
         int actualPetArrayListSize = petWarehouse.getNumberOfPets();
         // Then
         Assert.assertEquals(expectedPetArrayListSize, actualPetArrayListSize);
+    }
+
+    @Test
+    public void printPetNamesAndWhatTheySpeak() {
+        // Given
+        String expectedPetName = "petName";
+        String expectedWhatPetSpeaks = "petSpeak";
+        Dog pet = new Dog(expectedPetName);
+        // When
+        petWarehouse.addPets(pet);
+        String actualPetName = petWarehouse.getPetArrayList().get(0).getName();
+        String actualWhatPetSpeaks = petWarehouse.getPetArrayList().get(0).speak();
+        // Then
+        Assert.assertEquals(expectedPetName, actualPetName);
+        Assert.assertEquals(expectedWhatPetSpeaks, actualWhatPetSpeaks);
     }
 
 }

@@ -18,7 +18,7 @@ public class PetFactoryTest {
 
     @Test
     public void PetFactoryDefaultConstructorTest() {
-
+        // how do you test for a static PetFactory?
     }
 
     @Test

@@ -3,7 +3,7 @@ package io.zipcoder.pets;
 public class PetFactory {
 
     public PetFactory() {
-        
+
     }
 
     public Pet createAndReturnPet(String petType, String petName) {
