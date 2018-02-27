@@ -2,11 +2,12 @@ package io.zipcoder.pets;
 
 import java.util.ArrayList;
 
-public class PetFarm {
+// Make this a singleton
+public class PetWarehouse {
 
     private ArrayList<Pet> petArrayList;
 
-    public PetFarm() {
+    public PetWarehouse() {
     }
 
     public ArrayList<Pet> getPetArrayList() {
@@ -15,6 +16,12 @@ public class PetFarm {
 
     public int getNumberOfPets() {
         return 0;
+    }
+
+    public void addPets(Pet pet) {
+    }
+
+    public void removePets(Pet pet) {
     }
 
 
