@@ -20,31 +20,28 @@ public class PetFactoryTest {
     }
 
     @Test
-    public void createAndReturnPetTest() {
+    public void createPetTest() {
         // Given
         String expectedPetType = "dog";
         String expectedPetName = "dogName";
         // When
-        Pet pet = petFactory.createAndReturnPet(expectedPetType, expectedPetName);
-        petFactory.sendPetToWarehouse(pet);
-        String actualPetName = petWarehouse.getPets().get(0).getName();
+        petFactory = new PetFactory();
+        petFactory.createPet(expectedPetType, expectedPetName);
+        String actualPetName = PetWarehouse.INSTANCE.getPets().get(0).getName();
         // Then
         Assert.assertEquals(expectedPetName, actualPetName);
-
     }
 
     @Test
     public void sendPetToWarehouse() {
         // Given
-        String expectedPetType = "dog";
         String expectedPetName = "dogName";
         dog = new Dog(expectedPetName);
         // When
+        petFactory = new PetFactory();
         petFactory.sendPetToWarehouse(dog);
-        String actualPetName = petWarehouse.getPets().get(0).getName();
+        String actualPetName = PetWarehouse.INSTANCE.getPets().get(0).getName();
         // Then
         Assert.assertEquals(expectedPetName, actualPetName);
     }
-
-
 }

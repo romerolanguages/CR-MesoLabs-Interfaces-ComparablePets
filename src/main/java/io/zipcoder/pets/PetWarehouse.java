@@ -42,7 +42,4 @@ public enum PetWarehouse {
         }
         System.out.println(sb.toString());
     }
-
-
-
 }

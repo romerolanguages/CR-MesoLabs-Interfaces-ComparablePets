@@ -15,12 +15,5 @@ import org.junit.Test;
 
 public class ApplicationTest {
 
-    private Application application;
-
-    @Test
-    public void getNumberOfPetsTest() {
-        int expectedNumberOfPets = 4;
-        int actualNumberOfPets = application.getPetArrayList().size();
-    }
 
 }
