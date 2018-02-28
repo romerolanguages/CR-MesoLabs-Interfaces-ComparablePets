@@ -5,8 +5,6 @@ import io.zipcoder.pets.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.security.PrivateKey;
-
 public class PetFactoryTest {
 
     private PetWarehouse petWarehouse;
@@ -27,10 +25,9 @@ public class PetFactoryTest {
         String expectedPetType = "dog";
         String expectedPetName = "dogName";
         // When
-        petWarehouse = new PetWarehouse();
         Pet pet = petFactory.createAndReturnPet(expectedPetType, expectedPetName);
         petFactory.sendPetToWarehouse(pet);
-        String actualPetName = petWarehouse.getPetArrayList().get(0).getName();
+        String actualPetName = petWarehouse.getPets().get(0).getName();
         // Then
         Assert.assertEquals(expectedPetName, actualPetName);
 
@@ -43,9 +40,8 @@ public class PetFactoryTest {
         String expectedPetName = "dogName";
         dog = new Dog(expectedPetName);
         // When
-        petWarehouse = new PetWarehouse();
         petFactory.sendPetToWarehouse(dog);
-        String actualPetName = petWarehouse.getPetArrayList().get(0).getName();
+        String actualPetName = petWarehouse.getPets().get(0).getName();
         // Then
         Assert.assertEquals(expectedPetName, actualPetName);
     }

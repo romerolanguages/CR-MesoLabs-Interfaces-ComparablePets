@@ -1,6 +1,5 @@
 package io.zipcoder.petsTest;
 
-import io.zipcoder.pets.Pet;
 import io.zipcoder.pets.Direwolf;
 import io.zipcoder.pets.Dog;
 import io.zipcoder.pets.Cat;
@@ -10,34 +9,28 @@ import org.junit.Test;
 
 public class PetWarehouseTest {
 
-    private PetWarehouse petWarehouse;
     private Dog dog;
     private Cat cat;
     private Direwolf direwolf;
 
     @Test
     public void PetWarehouseConstructorTest() {
-
-        // how do you test to make the PetWarehouse a singleton?
-
         // Given
         int expectedPetArrayListSize = 0;
         // When
-        petWarehouse = new PetWarehouse();
-        int actualPetArrayListSize = petWarehouse.getPetArrayList().size();
+        int actualPetArrayListSize = PetWarehouse.INSTANCE.getNumberOfPets();
         // Then
         Assert.assertEquals(expectedPetArrayListSize, actualPetArrayListSize);
     }
 
     @Test
-    public void getPetArrayListTest() {
+    public void getPetsTest() {
         // Given
         String expectedDogName = "dogName";
         // When
         dog = new Dog(expectedDogName);
-        petWarehouse = new PetWarehouse();
-        petWarehouse.getPetArrayList().add(dog);
-        String actualDogName = petWarehouse.getPetArrayList().get(0).getName();
+        PetWarehouse.INSTANCE.getPets().add(dog);
+        String actualDogName = PetWarehouse.INSTANCE.getPets().get(0).getName();
         // Then
         Assert.assertEquals(expectedDogName, actualDogName);
     }
@@ -48,9 +41,8 @@ public class PetWarehouseTest {
         int expectedSizeOfPetArrayList = 1;
         // When
         cat = new Cat("catName");
-        petWarehouse = new PetWarehouse();
-        petWarehouse.getPetArrayList().add(cat);
-        int actualSizeOfPetArrayList = petWarehouse.getPetArrayList().size();
+        PetWarehouse.INSTANCE.getPets().add(cat);
+        int actualSizeOfPetArrayList = PetWarehouse.INSTANCE.getNumberOfPets();
         // Then
         Assert.assertEquals(expectedSizeOfPetArrayList, actualSizeOfPetArrayList);
     }
@@ -61,9 +53,8 @@ public class PetWarehouseTest {
         String expectedNewDogName = "newDogName";
         // When
         dog = new Dog(expectedNewDogName);
-        petWarehouse = new PetWarehouse();
-        petWarehouse.addPets(dog);
-        String actualNewDogName = petWarehouse.getPetArrayList().get(0).getName();
+        PetWarehouse.INSTANCE.addPets(dog);
+        String actualNewDogName = PetWarehouse.INSTANCE.getPets().get(0).getName();
         // Then
         Assert.assertEquals(expectedNewDogName, actualNewDogName);
     }
@@ -75,24 +66,24 @@ public class PetWarehouseTest {
         int expectedPetArrayListSize = 0;
         // When
         direwolf = new Direwolf(expectedNewDirewolfName);
-        petWarehouse = new PetWarehouse();
-        petWarehouse.addPets(direwolf);
-        petWarehouse.removePets(direwolf);
-        int actualPetArrayListSize = petWarehouse.getNumberOfPets();
+        PetWarehouse.INSTANCE.addPets(direwolf);
+        PetWarehouse.INSTANCE.removePets(direwolf);
+        int actualPetArrayListSize = PetWarehouse.INSTANCE.getNumberOfPets();
         // Then
         Assert.assertEquals(expectedPetArrayListSize, actualPetArrayListSize);
     }
 
     @Test
-    public void printPetNamesAndWhatTheySpeak() {
+    public void printPetNamesAndWhatTheySpeakTest() {
         // Given
         String expectedPetName = "petName";
-        String expectedWhatPetSpeaks = "petSpeak";
+        String expectedWhatPetSpeaks = "woof";
         Dog pet = new Dog(expectedPetName);
         // When
-        petWarehouse.addPets(pet);
-        String actualPetName = petWarehouse.getPetArrayList().get(0).getName();
-        String actualWhatPetSpeaks = petWarehouse.getPetArrayList().get(0).speak();
+        PetWarehouse.INSTANCE.addPets(pet);
+        String actualPetName = PetWarehouse.INSTANCE.getPets().get(0).getName();
+        String actualWhatPetSpeaks = PetWarehouse.INSTANCE.getPets().get(0).speak();
+        PetWarehouse.INSTANCE.printPetNamesAndWhatTheySpeak();
         // Then
         Assert.assertEquals(expectedPetName, actualPetName);
         Assert.assertEquals(expectedWhatPetSpeaks, actualWhatPetSpeaks);

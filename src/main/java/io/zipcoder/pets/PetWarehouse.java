@@ -2,27 +2,47 @@ package io.zipcoder.pets;
 
 import java.util.ArrayList;
 
-// Make this a singleton
-public class PetWarehouse {
+public enum PetWarehouse {
 
-    private ArrayList<Pet> petArrayList;
+    INSTANCE;
+//    private static final PetWarehouse INSTANCE = new PetWarehouse();
+//
+//    private PetWarehouse() {}
+//
+//    public static PetWarehouse getPetWarehouse() {
+//        return INSTANCE;
+//    }
 
-    public PetWarehouse() {
-    }
+    private ArrayList<Pet> pets = new ArrayList<Pet>();
 
-    public ArrayList<Pet> getPetArrayList() {
-        return null;
+    public ArrayList<Pet> getPets() {
+        return pets;
     }
 
     public int getNumberOfPets() {
-        return 0;
+        return pets.size();
     }
 
     public void addPets(Pet pet) {
+        pets.add(pet);
     }
 
     public void removePets(Pet pet) {
+        pets.remove(pet);
     }
+
+    public void printPetNamesAndWhatTheySpeak() {
+        StringBuilder sb = new StringBuilder();
+        for (Pet pet : pets) {
+            sb.append("> Pet name: " + pet.getName() + "\n" +
+                       "\t" + "speaks: " + pet.speak());
+            if (pets.size() > 1) {
+                sb.append("\n");
+            }
+        }
+        System.out.println(sb.toString());
+    }
+
 
 
 }

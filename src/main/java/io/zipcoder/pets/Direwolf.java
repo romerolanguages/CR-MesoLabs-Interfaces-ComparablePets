@@ -6,9 +6,11 @@ public class Direwolf extends Pet {
     }
 
     public Direwolf(String name) {
+        super(name);
     }
 
     public String speak() {
-        return null;
+        String direwolfSpeak = "ah-ooh";
+        return direwolfSpeak;
     }
 }

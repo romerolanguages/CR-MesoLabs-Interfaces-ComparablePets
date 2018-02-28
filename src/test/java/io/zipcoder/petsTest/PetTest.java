@@ -19,6 +19,7 @@ public class PetTest {
         // Given
         String expectedDogName = "Fido";
         // When
+        dog = new Dog();
         dog.setName(expectedDogName);
         String actualDogName = dog.getName();
         // Assert
@@ -30,7 +31,7 @@ public class PetTest {
         // Given
         String expectedCatName = "Felix";
         // When
-        cat.setName(expectedCatName);
+        cat = new Cat(expectedCatName);
         String actualCatName = cat.getName();
         // Assert
         Assert.assertEquals(expectedCatName, actualCatName);
