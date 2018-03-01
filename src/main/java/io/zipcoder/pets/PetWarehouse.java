@@ -1,6 +1,7 @@
 package io.zipcoder.pets;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public enum PetWarehouse {
 
@@ -42,4 +43,9 @@ public enum PetWarehouse {
         }
         System.out.println(sb.toString());
     }
+
+    public void sortPetNamesByNameThenClassType() {
+        Collections.sort(PetWarehouse.INSTANCE.getPets());
+    }
+
 }

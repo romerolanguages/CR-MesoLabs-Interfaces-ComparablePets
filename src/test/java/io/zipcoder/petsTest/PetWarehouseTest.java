@@ -3,6 +3,7 @@ package io.zipcoder.petsTest;
 import io.zipcoder.pets.Direwolf;
 import io.zipcoder.pets.Dog;
 import io.zipcoder.pets.Cat;
+import io.zipcoder.pets.PetFactory;
 import io.zipcoder.pets.PetWarehouse;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,6 +13,7 @@ public class PetWarehouseTest {
     private Dog dog;
     private Cat cat;
     private Direwolf direwolf;
+    private PetFactory petFactory;
 
     @Test
     public void PetWarehouseConstructorTest() {
@@ -87,6 +89,36 @@ public class PetWarehouseTest {
         // Then
         Assert.assertEquals(expectedPetName, actualPetName);
         Assert.assertEquals(expectedWhatPetSpeaks, actualWhatPetSpeaks);
+    }
+
+    @Test
+    public void sortPetNamesByNameThenClassTypeTest() {
+        // Given
+        petFactory = new PetFactory();
+        String expectedFirstPetName = "adam";
+        String expectedFirstPetType = "cat";
+        String expectedSecondPetName = "adam";
+        String expectedSecondPetType = "dog";
+        String expectedThirdPetName = "bobby";
+        String expectedThirdPetType = "direwolf";
+        String expectedFourthPetName = "cathy";
+        String expectedFourthPetType = "cat";
+        // Created pets in reversed order
+        petFactory.createPet(expectedFourthPetType, expectedFourthPetName);
+        petFactory.createPet(expectedThirdPetType, expectedThirdPetName);
+        petFactory.createPet(expectedSecondPetType, expectedSecondPetName);
+        petFactory.createPet(expectedFirstPetType, expectedFirstPetName);
+        // When
+        PetWarehouse.INSTANCE.sortPetNamesByNameThenClassType();
+        String actualFirstPetName = PetWarehouse.INSTANCE.getPets().get(0).getName();
+        String actualSecondPetName = PetWarehouse.INSTANCE.getPets().get(1).getName();
+        String actualThirdPetName = PetWarehouse.INSTANCE.getPets().get(2).getName();
+        String actualFourthPetName = PetWarehouse.INSTANCE.getPets().get(3).getName();
+        // Then
+        Assert.assertEquals(expectedFirstPetName, actualFirstPetName);
+        Assert.assertEquals(expectedSecondPetName, actualSecondPetName);
+        Assert.assertEquals(expectedThirdPetName, actualThirdPetName);
+        Assert.assertEquals(expectedFourthPetName, actualFourthPetName);
     }
 
 }

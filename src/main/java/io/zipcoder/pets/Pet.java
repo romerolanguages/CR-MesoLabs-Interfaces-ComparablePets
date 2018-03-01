@@ -1,6 +1,6 @@
 package io.zipcoder.pets;
 
-public abstract class Pet {
+public abstract class Pet implements Comparable<Pet> {
 
     protected String name;
 
@@ -20,7 +20,14 @@ public abstract class Pet {
         return name;
     }
 
-    // do not have to test an abstract method
     public abstract String speak();
+
+    public int compareTo(Pet otherPet) {
+        if ( this.getName().equals(otherPet.getName()) ) {
+            return this.getClass().getSimpleName().compareTo(otherPet.getClass().getSimpleName());
+        } else {
+            return this.getName().compareTo(otherPet.getName());
+        }
+    }
 
 }
