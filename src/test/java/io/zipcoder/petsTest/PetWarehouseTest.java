@@ -95,21 +95,51 @@ public class PetWarehouseTest {
     public void sortPetNamesByNameThenClassTypeTest() {
         // Given
         petFactory = new PetFactory();
-        String expectedFirstPetName = "adam";
         String expectedFirstPetType = "cat";
-        String expectedSecondPetName = "adam";
+        String expectedFirstPetName = "adam";
         String expectedSecondPetType = "dog";
-        String expectedThirdPetName = "bobby";
+        String expectedSecondPetName = "adam";
         String expectedThirdPetType = "direwolf";
-        String expectedFourthPetName = "cathy";
+        String expectedThirdPetName = "bobby";
         String expectedFourthPetType = "cat";
+        String expectedFourthPetName = "cathy";
         // Created pets in reversed order
         petFactory.createPet(expectedFourthPetType, expectedFourthPetName);
         petFactory.createPet(expectedThirdPetType, expectedThirdPetName);
         petFactory.createPet(expectedSecondPetType, expectedSecondPetName);
         petFactory.createPet(expectedFirstPetType, expectedFirstPetName);
         // When
-        PetWarehouse.INSTANCE.sortPetNamesByNameThenClassType();
+        PetWarehouse.INSTANCE.sortPetsByNameThenClassType();
+        String actualFirstPetName = PetWarehouse.INSTANCE.getPets().get(0).getName();
+        String actualSecondPetName = PetWarehouse.INSTANCE.getPets().get(1).getName();
+        String actualThirdPetName = PetWarehouse.INSTANCE.getPets().get(2).getName();
+        String actualFourthPetName = PetWarehouse.INSTANCE.getPets().get(3).getName();
+        // Then
+        Assert.assertEquals(expectedFirstPetName, actualFirstPetName);
+        Assert.assertEquals(expectedSecondPetName, actualSecondPetName);
+        Assert.assertEquals(expectedThirdPetName, actualThirdPetName);
+        Assert.assertEquals(expectedFourthPetName, actualFourthPetName);
+    }
+
+    @Test
+    public void sortPetNamesByClassTypeThenNameTest() {
+        // Given
+        petFactory = new PetFactory();
+        String expectedFirstPetType = "cat";
+        String expectedFirstPetName = "adam";
+        String expectedSecondPetType = "cat";
+        String expectedSecondPetName = "bobby";
+        String expectedThirdPetType = "direwolf";
+        String expectedThirdPetName = "zack";
+        String expectedFourthPetType = "dog";
+        String expectedFourthPetName = "summer";
+        // Created pets in reversed order
+        petFactory.createPet(expectedFourthPetType, expectedFourthPetName);
+        petFactory.createPet(expectedThirdPetType, expectedThirdPetName);
+        petFactory.createPet(expectedSecondPetType, expectedSecondPetName);
+        petFactory.createPet(expectedFirstPetType, expectedFirstPetName);
+        // When
+        PetWarehouse.INSTANCE.sortPetNamesByClassTypeThenName();
         String actualFirstPetName = PetWarehouse.INSTANCE.getPets().get(0).getName();
         String actualSecondPetName = PetWarehouse.INSTANCE.getPets().get(1).getName();
         String actualThirdPetName = PetWarehouse.INSTANCE.getPets().get(2).getName();
